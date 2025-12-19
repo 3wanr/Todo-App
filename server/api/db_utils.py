@@ -2,9 +2,10 @@ import psycopg2
 import yaml
 import os
 
-def connect():
+def connect(): 
     config = {}
-    yml_path = os.path.join(os.path.dirname(__file__), '../config/db.yml')
+    # config directory is at project root: ../../config/db.yml from server/api
+    yml_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'db.yml'))
 
     with open(yml_path, 'r') as file:
         config = yaml.load(file, Loader=yaml.FullLoader)
